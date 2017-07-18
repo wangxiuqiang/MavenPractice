@@ -4,7 +4,7 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>ProductForm.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
@@ -12,9 +12,13 @@
   <servlet>
    <servlet-name>springmvc</servlet-name>
    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+   <init-param>
+   <param-name>contextConfigLocation</param-name>
+    <param-value>/src/main/webapp/WEB-INF/springmvc-servlet.xml</param-value>
+   </init-param>
   </servlet>
   <servlet-mapping>
   <servlet-name>springmvc</servlet-name>
-  <url-pattern>/</url-pattern>
+  <url-pattern>*.action</url-pattern>
   </servlet-mapping>
 </web-app>
