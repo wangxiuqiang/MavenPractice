@@ -26,7 +26,7 @@ public class SavaProductController implements Controller {
         product.setDescription(productForm.getDescription());
         product.setPrice(Float.parseFloat(productForm.getPrice()));
      
-        return new ModelAndView("/src/main/webapp/WEB-INF/jsp/ProductDetails.jsp");
+        return new ModelAndView("ProductDetails");
 	}
 
 }

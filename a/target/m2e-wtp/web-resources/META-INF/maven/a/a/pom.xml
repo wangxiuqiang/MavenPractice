@@ -1,5 +1,7 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+	 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>a</groupId>
 	<artifactId>a</artifactId>
@@ -15,9 +17,28 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
+
+			</plugin>
+			<plugin>
+				 <groupId>org.apache.tomcat.maven</groupId>  
+                <artifactId>tomcat7-maven-plugin</artifactId>  
+                <version>2.2</version>  
+				<configuration>
+					
+					<!-- 此为管理员路径，不是部署路径 -->
+					<url>http://localhost:8080/manager/text</url>
+					<uriEncoding>utf-8</uriEncoding><!-- <update>true</update> <server>tomcat</server> --><!-- 此处为服务器上的用户名和密码，早tomcat-user里设置 -->
+					<!-- 格式如 <role rolename="tomcat"/> <role rolename="manager"/> <role 
+						rolename="admin"/> <role rolename="manager-gui"/> <role rolename="manager-script"/> 
+						<user username="admin" password="admin" roles="tomcat，manager,admin,manager-gui,manager-script"/> -->
+					<server>tomcat7</server>
+					<username>admin</username>
+					<password>admin</password>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-expression -->
 		<dependency>
@@ -25,7 +46,18 @@
 			<artifactId>spring-expression</artifactId>
 			<version>3.2.2.RELEASE</version>
 		</dependency>
-
+<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.4</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.2.2</version>
+</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
