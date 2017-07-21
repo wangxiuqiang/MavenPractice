@@ -1,4 +1,4 @@
 controller/InputProductController.class
 form/ProductForm.class
-controller/SavaProductController.class
 domain/Product.class
+controller/SaveProductController.class
