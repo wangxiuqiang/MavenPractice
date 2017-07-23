@@ -2,28 +2,37 @@ package com.Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
-import org.springframework.remoting.RemoteTimeoutException;
+import org.springframework.stereotype.Service;
 
-public class jdbc {
-	private static String driver = "com.mysql.jdbc.Driver";
-	private static String user = "root";
-	private static String password = "root";
-	private static String url = "jdbc:mysql://localhost:3306/test";
-    static Connection conn  = null;
-    static {
+import com.domain.Product;
+
+@Service
+public class jdbc implements jdbcImplement{
+    public int test(Product product){
+		String driver = "com.mysql.jdbc.Driver";
+		String user = "root";
+		String password = "root";
+		String url = "jdbc:mysql://localhost:3306/test";
+		Connection conn = null;
 		try {
-            Class.forName(driver);
+			if (conn == null) {
+				conn = DriverManager.getConnection(url, user, password);
+			    System.out.println("Yes");
+			}
+
+			String sql = "insert into product(name,description,price) values(?,?,?)";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, product.getName());
+			statement.setString(2, product.getDescription());
+			statement.setFloat(3, product.getPrice());
+			int i = statement.executeUpdate();
+			System.out.println("\n "+i +"\n");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	public  static Connection getConn() throws Exception {
-		if(conn == null){
-			conn = DriverManager.getConnection(url, user, password);
-		}
-		return conn;
-
-	}
+		return 1;
+    }
+	
 }
