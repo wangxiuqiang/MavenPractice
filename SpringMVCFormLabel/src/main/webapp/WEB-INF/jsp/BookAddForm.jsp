@@ -18,10 +18,11 @@
 					<form:select id="category" path="category.id"
 						items="${categories }" itemLabel="name" itemValue="id" />
 				</p>
-				<p>
+				 <p>
 					<label for="title">Title:</label>
 					<form:input id="title" path="title" />
-				</p>
+				</p> 
+				
 				<p>
 					<label for="author">Author:</label>
 					<form:input id="author" path="author" />
