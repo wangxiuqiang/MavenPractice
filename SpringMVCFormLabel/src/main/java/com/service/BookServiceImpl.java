@@ -13,60 +13,81 @@ public class BookServiceImpl implements BookService {
 
 	private List<Category> categories;
 	private List<Book> books;
-	
-	 public BookServiceImpl() {//初始化List<E>
+
+	public BookServiceImpl() {// 初始化List<E>
 		categories = new ArrayList<Category>();
-		Category category1 = new Category(1,"Computing");
+		Category category1 = new Category(1, "Computing");
 		Category category2 = new Category(2, "Travel");
-		Category category3 = new Category(3,"Health");//name属性相当于标签
-	    categories.add(category1);
-	    categories.add(category2);
-	    categories.add(category3);
-	    
-	    books = new ArrayList<Book>();
-	    books.add(new Book(1L,"9780980839623","Servlet & JSP:A Tutorial",category1,"Budi Kurnuawan"));
-	    books.add(new Book(2L,"9780980839630","C#:A Beginner's Tutorial",category1,"Jayden Ky"));
-	 }
+		Category category3 = new Category(3, "Health");// name属性相当于标签
+		categories.add(category1);
+		categories.add(category2);
+		categories.add(category3);
+
+		books = new ArrayList<Book>();
+		books.add(new Book(1L, "9780980839623", "Servlet & JSP:A Tutorial", category1, "Budi Kurnuawan"));
+		books.add(new Book(2L, "9780980839630", "C#:A Beginner's Tutorial", category1, "Jayden Ky"));
+	}
+
 	@Override
 	public Category getCategory(int id) {
-		
+        for(Category category : categories){
+        	if(id == category.getId()){
+        		return category ;
+        	}
+        }
 		return null;
 	}
 
 	@Override
 	public Book save(Book book) {
-		// TODO Auto-generated method stub
+		book.setId(getNextId());//获取新的书籍的编号
+		books.add(book);//加入List数组
+		return book;
+	}
+
+	@Override
+	public Book update(Book book) {//通过for循环找到要更新的值，进行更新
+		int bookCount = books.size();
+		for(int i = 0; i < bookCount;i ++){
+			Book saveBook = books.get(i);
+			if(saveBook.getId() == book.getId()){
+				books.set(i, book);
+				return book;
+			}
+		}
 		return null;
 	}
 
 	@Override
-	public Book update(Book book) {
-		// TODO Auto-generated method stub
+	public Book get(long id) {// 通过id获取book对象
+		for (Book book : books) {
+			if (id == book.getId()) {
+				return book;
+			}
+		}
 		return null;
 	}
 
 	@Override
-	public Book get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public long getNextId() {// 通过foreach循环遍历，把id添加到最后一个产生新的id
+		long id = 0L;
+		for (Book book : books) {
+			long bookid = book.getId();
+			if (bookid > id) {
+				id = bookid;
+			}
+		}
+		return id + 1;
 	}
 
 	@Override
-	public long getNextId() {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<Category> getAllCategories() {
+		return categories;
 	}
 
 	@Override
-	public java.util.List<Category> getAllCategories() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public java.util.List<Book> getAllBooks() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Book> getAllBooks() {
+		return books;
 	}
 
 }

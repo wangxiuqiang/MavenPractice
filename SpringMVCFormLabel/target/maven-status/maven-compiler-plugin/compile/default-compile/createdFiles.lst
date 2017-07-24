@@ -1,0 +1,5 @@
+com/controller/BookController.class
+com/domain/Book.class
+com/domain/Category.class
+com/service/BookService.class
+com/service/BookServiceImpl.class
