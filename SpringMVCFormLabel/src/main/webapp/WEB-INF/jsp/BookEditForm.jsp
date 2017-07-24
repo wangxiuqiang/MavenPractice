@@ -31,10 +31,12 @@
 					<label for="isbn">ISBN:</label>
 					<form:input id="isbn" path="isbn" />
 				</p>
+			
 				<p id="buttons">
 					<input id="reset" type="reset" tabindex="4" />
 					<input id="submit" type="submit" tabindex="5" value ="Update Book" /> 
 				</p>
+				
 			</fieldset>
 		</form:form>
 	</div>
