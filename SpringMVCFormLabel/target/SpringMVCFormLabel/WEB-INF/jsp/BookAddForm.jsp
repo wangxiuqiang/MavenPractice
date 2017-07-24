@@ -18,9 +18,13 @@
 					<form:select id="category" path="category.id"
 						items="${categories }" itemLabel="name" itemValue="id" />
 				</p>
-				<p>
+				<!-- <p>
 					<label for="title">Title:</label>
 					<form:input id="title" path="title" />
+				</p> -->
+				<p>
+				<form:textarea path="title" cols="5" rows="6"/>
+				
 				</p>
 				<p>
 					<label for="author">Author:</label>
