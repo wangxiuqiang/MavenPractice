@@ -58,7 +58,6 @@ public class BookController {
     	/**
     	 * 获取category 更新书籍的category 
     	 */
-//    	System.out.println("dsfsdfds");
     	Category category = bookService.getCategory(book.getCategory().getId());
     	book.setCategory(category);
     	bookService.update(book);

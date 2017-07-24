@@ -9,7 +9,8 @@
 </head>
 <body>
 	<div>
-		<form:form commandName="book" action="book_update" method="post">
+	<!-- action 如果使用/book_update 会找不到页面  ，如果使用book_update 会提示错误 -->
+		<form:form commandName="book" action="../book_update" method="post">
 			<fieldset>
 				<legend>Edit a book</legend>
 				<form:hidden path="id" />
