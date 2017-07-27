@@ -14,6 +14,7 @@
 Product Name:${product.name}<br/>
 Description:${product.description }<br/>
 Price:$${product.price }<br/><!-- 第二个$是美元符 -->
+i:${i }
 </p>
 </div>
 </body>

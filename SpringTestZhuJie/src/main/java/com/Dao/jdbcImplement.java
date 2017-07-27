@@ -3,5 +3,6 @@ package com.Dao;
 import com.domain.Product;
 
 public interface jdbcImplement {
-     int test(Product product);
+    public  void test(Product product);
+    public int test1();
 }

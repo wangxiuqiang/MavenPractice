@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.Dao.jdbc;
 import com.Dao.jdbcImplement;
 import com.domain.Product;
 import com.form.ProductForm;
@@ -14,8 +15,9 @@ import com.form.ProductForm;
 @Controller
 public class ProductController {
 	private final static Log logger = LogFactory.getLog(ProductController.class);
+	
 	@Autowired
-	private jdbcImplement jdbcImplement;
+	private jdbcImplement jdbc;
 
 	@RequestMapping("/product_input")
 	public String inputProduct() {
@@ -32,10 +34,9 @@ public class ProductController {
 		product.setName(productForm.getName());
 		product.setDescription(productForm.getDescription());
 		product.setPrice(Float.parseFloat(productForm.getPrice()));
-		int i = 0;
-		System.err.println(i);
-		i = jdbcImplement.test(product);
-		System.out.println(i);
+		jdbc.test(product);
+		int i = jdbc.test1();
+		model.addAttribute("i",i);
 		model.addAttribute("product", product);
 		return "ProductDetails";
 	}

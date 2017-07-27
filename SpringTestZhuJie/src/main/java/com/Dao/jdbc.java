@@ -9,30 +9,39 @@ import org.springframework.stereotype.Service;
 import com.domain.Product;
 
 @Service
-public class jdbc implements jdbcImplement{
-    public int test(Product product){
+public class jdbc implements jdbcImplement {
+	public jdbc(){
+		
+	}
+	
+	@Override
+	public void test(Product product) {
 		String driver = "com.mysql.jdbc.Driver";
 		String user = "root";
 		String password = "root";
 		String url = "jdbc:mysql://localhost:3306/test";
-		Connection conn = null;
+        System.out.println("aaaa");
 		try {
-			if (conn == null) {
-				conn = DriverManager.getConnection(url, user, password);
-			    System.out.println("Yes");
-			}
-
-			String sql = "insert into product(name,description,price) values(?,?,?)";
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, user, password);
+			String sql = "insert product(name,description,price) values(?,?,?)";
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, product.getName());
 			statement.setString(2, product.getDescription());
-			statement.setFloat(3, product.getPrice());
-			int i = statement.executeUpdate();
-			System.out.println("\n "+i +"\n");
+			statement.setFloat(3,product.getPrice());
+			statement.executeUpdate();
+			statement.close();
+			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 1;
-    }
-	
+	}
+
+	@Override
+	public int test1() {
+		
+		int i=9;
+		return i;
+	}
+
 }
