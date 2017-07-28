@@ -20,7 +20,7 @@ public class jdbc implements jdbcImplement {
 		String user = "root";
 		String password = "root";
 		String url = "jdbc:mysql://localhost:3306/test";
-        System.out.println("aaaa");
+      // System.out.println("aaaa");
 		try {
 			Class.forName(driver);
 			Connection conn = DriverManager.getConnection(url, user, password);
@@ -35,13 +35,6 @@ public class jdbc implements jdbcImplement {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public int test1() {
-		
-		int i=9;
-		return i;
 	}
 
 }
