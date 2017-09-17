@@ -96,7 +96,7 @@
 <body>
 <div class="HeadDiv">某大学计算机学院考试成绩查询系统</div>
 
-<div style="background-image: url(/images/beijing.jpeg);"></div>
+<div ></div>
 
 <div class="FormDiv">
     <div class="ChooseDiv">
@@ -104,7 +104,7 @@
         <div><a href="#">教师登录</a></div>
         <div><a href="#">学生登录</a></div>
     </div>
-    <form:form commandName="join" id="join">
+    <form:form commandName="join" id="join" action="success_in" method="post">
         <table>
             <tr>
                 <td>

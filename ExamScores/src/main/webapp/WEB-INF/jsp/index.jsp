@@ -104,7 +104,7 @@
         <div><a href="#">教师登录</a></div>
         <div><a href="#">学生登录</a></div>
     </div>
-    <form:form commandName="join" id="join">
+    <form:form commandName="join" id="join" action="success_in" method="post">
         <table>
             <tr>
                 <td>
